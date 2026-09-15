@@ -47,6 +47,32 @@ export function Menu() {
         })
     }, [currentIndex])
 
+    useGSAP(() => {
+        const leavesTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#menu',
+                scrub: true,
+                start: 'top bottom',
+                end: 'bottom center'
+            }
+        });
+
+        leavesTimeline.fromTo('#m-left-leaf', {
+            x: -200,
+            scale: 0.5
+        }, {
+            x: 0,
+            scale: 1
+        }, 0)
+            .fromTo('#m-right-leaf', {
+                x: 200,
+                scale: 0.5
+            }, {
+                x: 0,
+                scale: 1
+            }, 0)
+    })
+
     const totalCocktails = allCocktails.length;
 
     const goToSlide = (index) => {
